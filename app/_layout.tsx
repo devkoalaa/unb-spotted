@@ -49,7 +49,7 @@ function RootLayoutNav() {
       {/* <View className="bg-red-900"> */}
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+          <Stack.Screen name="settings" options={{ presentation: "modal", title: "Ajustes" }} />
         </Stack>
       {/* </View> */}
     </ThemeProvider>

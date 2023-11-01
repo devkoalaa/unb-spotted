@@ -1,8 +1,6 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Link, Tabs } from "expo-router";
 import { Pressable, useColorScheme } from "react-native";
-
 import Colors from "../../constants/Colors";
 
 function TabBarIcon(props: {
@@ -27,11 +25,11 @@ export default function TabLayout() {
           title: "Perfil",
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/settings" asChild>
               <Pressable>
                 {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
+                  <AntDesign
+                    name="setting"
                     size={25}
                     color={Colors[colorScheme ?? "light"].text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
@@ -46,7 +44,9 @@ export default function TabLayout() {
         name="messages"
         options={{
           title: "Mensagens",
-          tabBarIcon: ({ color }) => <TabBarIcon name="message1" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="message1" color={color} />
+          ),
         }}
       />
       <Tabs.Screen

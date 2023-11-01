@@ -4,7 +4,6 @@ import {
   View as DefaultView,
   ScrollView as DefaultScrollView,
 } from "react-native";
-
 import Colors from "../constants/Colors";
 
 type ThemeProps = {
@@ -54,5 +53,7 @@ export function ScrollView(props: ScrollViewProps) {
     "background"
   );
 
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+  return (
+    <DefaultScrollView style={[{ backgroundColor }, style]} {...otherProps} />
+  );
 }
