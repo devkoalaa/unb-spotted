@@ -8,7 +8,7 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
-import { View } from "../components/Themed";
+import Colors from "../constants/Colors";
 
 export { ErrorBoundary } from "expo-router";
 
@@ -46,12 +46,23 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      {/* <View className="bg-red-900"> */}
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="settings" options={{ presentation: "modal", title: "Ajustes" }} />
-        </Stack>
-      {/* </View> */}
+      <Stack>
+        <Stack.Screen
+          name="(tabs)"
+          options={{
+            headerShown: false,
+            statusBarColor: Colors[colorScheme ?? "light"].background,
+            statusBarStyle: colorScheme == "light" ? "dark" : "light",
+          }}
+        />
+        <Stack.Screen
+          name="settings"
+          options={{
+            presentation: "modal",
+            title: "Ajustes",
+          }}
+        />
+      </Stack>
     </ThemeProvider>
   );
 }

@@ -1,9 +1,9 @@
+import { AntDesign } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { TouchableOpacity, useColorScheme } from "react-native";
 import { ScrollView, Text, View } from "../../components/Themed";
 import Colors from "../../constants/Colors";
-import { AntDesign } from "@expo/vector-icons";
-import FakeApi from "../../constants/FakeApi"
+import FakeApi from "../../constants/FakeApi";
 
 export default function TabHomeScreen() {
   const iconColor = Colors[useColorScheme() ?? "light"].text;
@@ -24,12 +24,12 @@ export default function TabHomeScreen() {
             source={{ uri: post.imageUrl }}
             className="w-full h-40 mt-2 rounded-lg"
           />
-          <View className="mt-2 flex-row items-center">
-            <TouchableOpacity>
+          <TouchableOpacity>
+            <View className="mt-2 flex-row items-center">
               <AntDesign name="heart" color={iconColor} size={15} />
-            </TouchableOpacity>
-            <Text className="ml-2">{post.likes} Curtidas</Text>
-          </View>
+              <Text className="ml-2">{post.likes} Curtidas</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       ))}
     </ScrollView>
