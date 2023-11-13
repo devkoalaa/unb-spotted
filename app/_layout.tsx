@@ -58,8 +58,17 @@ function RootLayoutNav() {
         <Stack.Screen
           name="settings"
           options={{
-            presentation: "modal",
             title: "Ajustes",
+            statusBarColor: Colors[colorScheme ?? "light"].background,
+            statusBarStyle: colorScheme == "light" ? "dark" : "light",
+          }}
+        />
+        <Stack.Screen
+          name="chat"
+          options={{
+            title: "Chat",
+            statusBarColor: Colors[colorScheme ?? "light"].background,
+            statusBarStyle: colorScheme == "light" ? "dark" : "light",
           }}
         />
       </Stack>

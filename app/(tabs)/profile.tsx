@@ -13,7 +13,7 @@ export default function TabProfileScreen() {
     <ScrollView className="flex-1 p-2 space-y-2">
       <View className="justify-center space-y-5 items-center">
         <Image
-          source={{ uri: FakeApi.users[0].avatarUrl }}
+          source={{ uri: FakeApi.users[0].userAvatarUrl }}
           className="w-40 h-40 mt-2 rounded-full"
         />
         <Text className="text-base font-bold">
@@ -39,7 +39,7 @@ export default function TabProfileScreen() {
         <View key={post.id} className="p-4">
           <View className="flex-row items-center">
             <Image
-              source={{ uri: FakeApi.users[0].avatarUrl }}
+              source={{ uri: FakeApi.users[0].userAvatarUrl }}
               className="w-12 h-12 rounded-full"
             />
             <Text className="font-bold ml-2">{FakeApi.users[0].name}</Text>
