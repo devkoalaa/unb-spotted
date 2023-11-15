@@ -1,23 +1,25 @@
 import { AntDesign } from "@expo/vector-icons";
 import { Image } from "expo-image";
-import React from "react";
+import React, { useContext } from "react";
 import { TouchableOpacity, useColorScheme } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { ScrollView, Text, View } from "../../components/Themed";
 import FakeApi from "../../constants/FakeApi";
+import { MainContext } from "../../contexts/MainContext";
 
 export default function TabProfileScreen() {
   const iconColor = Colors[useColorScheme() ?? "light"].text;
+  const userLogged = useContext(MainContext);
 
   return (
-    <ScrollView className="flex-1 p-2 space-y-2">
+    <ScrollView className="flex-1 space-y-2 mx-1 my-1">
       <View className="justify-center space-y-5 items-center">
         <Image
-          source={{ uri: FakeApi.users[0].userAvatarUrl }}
+          source={{ uri: userLogged.userAvatarUrl }}
           className="w-40 h-40 mt-2 rounded-full"
         />
         <Text className="text-base font-bold">
-          {FakeApi.users[0].name} {FakeApi.users[0].lastname}
+          {userLogged.name} {userLogged.lastname}
         </Text>
         <View className="flex-row space-x-8">
           <View className="items-center">
@@ -39,10 +41,10 @@ export default function TabProfileScreen() {
         <View key={post.id} className="p-4">
           <View className="flex-row items-center">
             <Image
-              source={{ uri: FakeApi.users[0].userAvatarUrl }}
+              source={{ uri: userLogged.userAvatarUrl }}
               className="w-12 h-12 rounded-full"
             />
-            <Text className="font-bold ml-2">{FakeApi.users[0].name}</Text>
+            <Text className="font-bold ml-2">{userLogged.name}</Text>
           </View>
           <Text className="mt-2">{post.text}</Text>
           <Image

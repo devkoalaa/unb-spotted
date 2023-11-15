@@ -9,6 +9,8 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 import Colors from "../constants/Colors";
+import FakeApi from "../constants/FakeApi";
+import { MainContext } from "../contexts/MainContext";
 
 export { ErrorBoundary } from "expo-router";
 
@@ -41,37 +43,41 @@ export default function RootLayout() {
   return <RootLayoutNav />;
 }
 
+const userLogged = FakeApi.users[0];
+
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen
-          name="(tabs)"
-          options={{
-            headerShown: false,
-            statusBarColor: Colors[colorScheme ?? "light"].background,
-            statusBarStyle: colorScheme == "light" ? "dark" : "light",
-          }}
-        />
-        <Stack.Screen
-          name="settings"
-          options={{
-            title: "Ajustes",
-            statusBarColor: Colors[colorScheme ?? "light"].background,
-            statusBarStyle: colorScheme == "light" ? "dark" : "light",
-          }}
-        />
-        <Stack.Screen
-          name="chat"
-          options={{
-            title: "Chat",
-            statusBarColor: Colors[colorScheme ?? "light"].background,
-            statusBarStyle: colorScheme == "light" ? "dark" : "light",
-          }}
-        />
-      </Stack>
+      <MainContext.Provider value={userLogged}>
+        <Stack>
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: false,
+              statusBarColor: Colors[colorScheme ?? "light"].background,
+              statusBarStyle: colorScheme == "light" ? "dark" : "light",
+            }}
+          />
+          <Stack.Screen
+            name="settings"
+            options={{
+              title: "Ajustes",
+              statusBarColor: Colors[colorScheme ?? "light"].background,
+              statusBarStyle: colorScheme == "light" ? "dark" : "light",
+            }}
+          />
+          <Stack.Screen
+            name="chat"
+            options={{
+              title: "Chat",
+              statusBarColor: Colors[colorScheme ?? "light"].background,
+              statusBarStyle: colorScheme == "light" ? "dark" : "light",
+            }}
+          />
+        </Stack>
+      </MainContext.Provider>
     </ThemeProvider>
   );
 }

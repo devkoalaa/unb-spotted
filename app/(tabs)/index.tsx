@@ -9,9 +9,9 @@ export default function TabHomeScreen() {
   const iconColor = Colors[useColorScheme() ?? "light"].text;
 
   return (
-    <ScrollView className="flex-1 p-2 space-y-2">
+    <ScrollView className="flex-1 space-y-6 mx-2 my-1">
       {FakeApi.posts.map((post) => (
-        <View key={post.id} className="p-4">
+        <View key={post.id}>
           <View className="flex-row items-center">
             <Image
               source={{ uri: post.userAvatarUrl }}

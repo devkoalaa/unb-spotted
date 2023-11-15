@@ -1,10 +1,10 @@
 import { MessageBubble } from "../components/MessageBubble";
-import { ScrollView, Text, View } from "../components/Themed";
+import { ScrollView, View } from "../components/Themed";
 import FakeApi from "../constants/FakeApi";
 
 export default function ChatScreen() {
   return (
-    <ScrollView className="flex-1 p-1 space-y-2">
+    <ScrollView className="flex-1 space-y-2 mx-1 my-1">
       <View className="justify-center space-y-5 items-center pb-3">
         {FakeApi.messages.map((message, index) => (
           <MessageBubble
